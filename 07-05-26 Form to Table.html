@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> HTML Form </title>
+<style>
+body{
+font-family:verdana;
+padding:15px;
+}
+
+h3{
+text-align:center;
+}
+
+label{
+font-weight:bold;
+}
+
+ input,
+select,textarea{
+width:80%;
+padding:10px;
+margin-top:4px;
+margin-bottom:5px;
+}
+
+button{
+padding: 10px 20px;
+margin:10px;
+background-color:#707070;
+color:white;
+border:none;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table,th,td{
+border: 1px solid black;
+}
+
+th,td{
+padding:10px;
+text-align:center;
+}
+
+th{
+background-color:#707070;
+color:white;
+}
+
+td{
+background-color:#e6e6e6;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<h3>Form</h3>
+<form id="eform">
+<label>Name:</label> <input type="text" id="name" placeholder="Enter your Name" required><br>
+
+<label>Phone Number:</label> <input type="tel" id="phone" placeholder="Enter Phone Number" required><br>
+
+<label>Department:</label> 
+<select id="dept" required>
+<option value="">---Select Department---</option>
+<option>AI</option>
+<option>Cs with AI</option>
+<option>IT</option>
+<option>BBA</option>
+</select><br><br>
+
+<label>Address: </label>
+<textarea id="address" placeholder="Enter Your Address" rows="2" cols="10" required></textarea>
+<br><br>
+
+<button type="button" onclick="addData()"> Submit </button>
+</form>
+
+<h3>Submitted Data</h3>
+
+<table id="etable">
+<tr>
+	<th>Name</th>
+	<th>Phone Number</th>
+	<th>Department</th>
+	<th>Address</th>
+</tr>
+</table>
+
+<script>
+function addData()
+{
+	let name = document.getElementById("name").value;
+	let pnum = document.getElementById("phone").value;
+	let dept = document.getElementById("dept").value;
+	let address = document.getElementById("address").value;
+	
+	let table = document.getElementById("etable");
+	let row = table.insertRow();
+	
+	let cell1 = row.insertCell(0);
+	let cell2 = row.insertCell(1);
+	let cell3 = row.insertCell(2);
+	let cell4 = row.insertCell(3);
+	
+	cell1.innerHTML = name;
+	cell2.innerHTML = pnum;
+	cell3.innerHTML = dept;
+	cell4.innerHTML = address;
+	
+	document.getElementById("eform").reset();
+	
+}
+</script>
+</body>
+
+</html>
