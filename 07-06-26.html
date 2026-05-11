@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> HTML Form </title>
+<style>
+body{
+font-family:verdana;
+padding:15px;
+}
+
+h3{
+text-align:center;
+}
+
+label{
+font-weight:bold;
+}
+
+ input,textarea{
+width:80%;
+padding:10px;
+margin-top:4px;
+margin-bottom:5px;
+}
+
+span{
+color:red;
+font-size:14px;
+}
+
+button{
+padding: 10px 20px;
+margin:10px;
+background-color:#707070;
+color:white;
+border:none;
+}
+
+table{
+width:100%;
+border-collapse:separate;
+margin-top:20px;
+}
+
+table,th,td{
+border: 1px solid black;
+}
+
+th,td{
+padding:10px;
+text-align:center;
+}
+
+th{
+background-color:#707070;/*Dark gray*/
+color:white;
+}
+
+td{
+background-color:#e6e6e6;/*Light gray*/
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<h3>Form</h3>
+<form id="eform" onsubmit="addData(); return false;">
+<label>Name:</label> <input type="text" id="name" placeholder="Enter your Name" required><br>
+<span id="nameerror"></span><br>
+
+<label>Phone Number:</label> <input type="tel" id="phone" placeholder="Enter Phone Number" required><br>
+<span id="phoneerror"></span><br>
+
+<label>Department:</label> 
+<input type="text" id="dept" placeholder="Enter your Department"><br>
+<span id="depterror"></span><br>
+
+<label>Email:</label>
+<input type="text" id="email" placeholder="Enter your Email" required><br>
+<span id="emailerror"></span><br>
+
+<label>Address: </label>
+<textarea id="address" placeholder="Enter Your Address" rows="2" cols="10" required></textarea>
+<br><br>
+<span id="addresserror"></span><br>
+
+<button type="submit"> Submit </button>
+</form>
+
+<h3>Submitted Data</h3>
+
+<table id="etable">
+<tr>
+	<th>Name</th>
+	<th>Phone Number</th>
+	<th>Department</th>
+    <th>Email</th>
+	<th>Address</th>
+</tr>
+</table>
+
+<script>
+function addData()
+{
+    
+    document.getElementById("nameerror").innerHTML = "";
+    document.getElementById("phoneerror").innerHTML = "";
+    document.getElementById("depterror").innerHTML = "";
+    document.getElementById("emailerror").innerHTML = "";
+    document.getElementById("addresserror").innerHTML = "";
+	let name = document.getElementById("name").value;
+	let pnum = document.getElementById("phone").value;
+	let dept = document.getElementById("dept").value;
+    let email = document.getElementById("email").value;
+	let address = document.getElementById("address").value;
+    let valid = true;
+
+    if(name.trim().length<2){
+        document.getElementById("nameerror").innerHTML="Name must contain atleast 2 characters";
+        valid=false;
+    }
+
+    if(!/^\d{10}$/.test(pnum)){
+        document.getElementById("phoneerror").innerHTML="Must be 10 numbers!!";
+        valid=false;
+    }
+
+    if(!email.includes("@gmail.com") && !email.includes("@outlook.com")){
+        document.getElementById("emailerror").innerHTML="Enter valid gmail or outlook email";
+        valid = false;
+    }
+
+    if(dept.trim()==""){
+        document.getElementById("depterror").innerHTML="Department should not be empty";
+        valid = false;
+    }
+
+    if(address.trim().length<5)
+    {
+        document.getElementById("addresserror").innerHTML="Address must be atleast 6 letters";
+        valid = false;
+    }
+
+    if(valid == false){
+        return;
+    }
+	
+	let table = document.getElementById("etable");
+	let row = table.insertRow();
+	
+	let cell1 = row.insertCell(0);
+	let cell2 = row.insertCell(1);
+	let cell3 = row.insertCell(2);
+	let cell4 = row.insertCell(3);
+    let cell5 = row.insertCell(4);
+	
+	cell1.innerHTML = name;
+	cell2.innerHTML = pnum;
+	cell3.innerHTML = dept;
+	cell4.innerHTML = email;
+    cell5.innerHTML = address;
+	
+	document.getElementById("eform").reset();
+	
+}
+</script>
+</body>
+
+</html>
