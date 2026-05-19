@@ -1,0 +1,310 @@
+//palindrome
+/*let palindrome = (str) => {
+    let s = str.toLowerCase();
+    let rev = s.split("").reverse().join("");
+    
+    if(rev == s){
+        console.log("palindrome");
+    }
+    else{
+        console.log("Not a palindrome");
+    }
+}
+
+palindrome("Madam");
+palindrome("Dharshini");
+
+//print 1 to 10 numbers
+let numbers = (n) => {
+    for(let i=1;i<=n;i++){
+        console.log(i);
+    }
+}
+numbers(10);
+
+//greet
+function greet(){
+    console.log("Hello World");
+}
+greet();
+
+//add
+let add = (a,b) =>{
+    console.log(a+b);
+} 
+add(2,3);
+
+//even or odd
+let check = (n) => {
+    if(n%2 == 0){
+        console.log("Even");
+    }
+    else{
+        console.log("Odd");
+    }
+}
+check(3);
+
+//square of number
+let sq = n => {
+    console.log(n*n);
+}
+sq(4);
+
+//fibonacci
+let fibo = (n) => {
+    let n1=0;
+    let n2=1;
+    if (n == 0)
+    {
+        console.log("0");
+    }
+    for(let i=1;i<=n;i++)
+    {
+        console.log(n1);
+        
+        temp = n1+n2;
+        n1=n2;
+        n2=temp;
+    }
+    
+}
+fibo(1);
+fibo(5);
+
+//factorial
+let fact = (n) => {
+    let fact = 1;
+    if(n==0){
+        console.log("1");
+    }
+    for(let i=1;i<=n;i++){
+        fact = fact*i;
+    }
+    console.log(fact);
+}
+fact(5);
+
+//reverse a number
+let rev = (n) => {
+    let rev = 0;
+    while(n>0){ //234
+        let dig = n%10; //4|3|2
+        rev = rev*10 + dig; //0+4=4|4*10+3=43|43*10+2=432
+        n=Math.floor(n/10);//23|2
+    }
+    console.log(rev);//432
+}
+rev(234);
+
+//vowels clount
+let cvowels = (str) => {
+    let v ="aeiou";
+    let count = 0;
+    for(let i of str){
+        if(v.includes(i)){
+            count++;
+        }
+    }
+    console.log(count);
+}
+cvowels("Dharshini");
+
+//sum of array
+let sarr =(n) => {
+    let sum =0;
+    for(let i of n){
+        sum+=i;
+    }
+    console.log(sum);
+}
+sarr([1,2,3,4]);
+
+//Armstrong
+let armstrong = (n) => {
+    let l = n.toString().length;
+    let sum = 0;
+    let temp = n;
+    
+    while(n>0){
+        let dig = n%10;
+        sum += dig**l;
+        n = Math.floor(n/10);
+    }
+    
+    if(sum == temp){
+        console.log(temp + " is a armstrong number");
+    }
+    else{
+        console.log(temp + " is not a armstrong number");
+    }
+}
+armstrong(153);
+armstrong(123);
+
+
+//maximum number
+const max = (n) => {
+    let max = 0;
+    for(let i of n){
+        if(i>i){
+            console.log()
+        }
+    }
+}*/
+
+let palindrome = (str) => {
+    let s = str.toLowerCase();
+    let rev = s.split("").reverse().join("");
+    
+    if(rev == s){
+        console.log("palindrome");
+    }
+    else{
+        console.log("Not a palindrome");
+    }
+}
+
+palindrome("Madam");
+palindrome("Dharshini");
+
+//print 1 to 10 numbers
+let numbers = (n) => {
+    for(let i=1;i<=n;i++){
+        console.log(i);
+    }
+}
+//1. sum of two numbers
+const sum = (n1,n2) => {
+    let sum = n1+n2;
+    console.log("Sum: " + sum);
+}
+sum(2,3);
+console.log("------------------------------------------------------");
+
+//2. check prime number
+const checkprime = (n) => {
+    if(n<=1){
+        console.log(n+" is not a prime number");
+    }
+    if(n%1 == 0 && n%n == 0){
+        console.log(n+ " is a prime number");
+    }
+    else{
+        console.log(n + " is not a prime number");
+    }
+}
+checkprime(3);
+console.log("------------------------------------------------------");
+
+//3. Fibonacci series
+let fibo = (n) => {
+    let n1 = 0;
+    let n2 = 1;
+    if(n==0){
+        console.log("0");
+    }
+    for(let i=1;i<=n;i++)
+    {
+        console.log(n1);
+        
+        let temp = n1+n2;
+        n1 = n2;
+        n2 = temp;
+    }
+}
+fibo(5);
+console.log("------------------------------------------------------");
+
+//4. count vowels
+let count_vowels = (str) => {
+    let vowels = "aeiou";
+    let count = 0;
+    for(let i of str)
+    {
+        if(vowels.includes(i)){
+            count++;
+        }
+    }
+    console.log(count);
+}
+count_vowels("Dharshini");
+console.log("------------------------------------------------------");
+
+//5. find maximum in array
+const max_num = (n) => {
+    let max = n[0];
+    for(let i of n){
+        if(i>max){
+            max = i;
+        }
+    }
+    console.log(max);
+}
+max_num([3,7,9,8]);
+console.log("------------------------------------------------------");
+
+//6. sum of array elements
+let sum_arr = (n) => {
+    let sum = 0;
+    for(let i of n){
+        sum+=i;
+    }
+    console.log(sum);
+}
+sum_arr([1,2,3,4,5]);
+console.log("------------------------------------------------------");
+
+//7. count words in string
+let c_words = (str) => {
+    let count = 0;
+    for(let i in str){
+        count++;
+    }
+    console.log(count);
+}
+c_words("Dharshini");
+console.log("------------------------------------------------------");
+
+//8. swap two numbers
+let swap = (a,b) => {
+    console.log("Before swap: " + a,b);
+    
+    let temp = a;
+    a=b;
+    b=temp;
+    
+    console.log("After Swap: " + a,b);
+}
+swap(3,7);
+console.log("------------------------------------------------------");
+
+//9. converting string to uppercase
+let toupper = str => {
+    s = str.toUpperCase();
+    console.log(s);
+}
+toupper("dharshini");
+console.log("------------------------------------------------------");
+
+//10. simple calculation
+const calc = (n1,n2,ope) => {
+    if(ope == "+"){
+        console.log(n1+n2);
+    }
+    if(ope == "-"){
+        console.log(n1-n2);
+    }
+    if(ope == "*"){
+        console.log(n1*n2);
+    }
+    if(ope == "/"){
+        console.log(n1/n2);
+    }
+}
+calc(3,8,"+");
+calc(3,7,"-");
+calc(4,3,"*");
+calc(3,7,"/");
+
+console.log("------------------------------------------------------");
