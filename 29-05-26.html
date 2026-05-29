@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Student Result Management</title>
+  
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    body{
+      background:#AEC6CF;
+      padding:30px;
+    }
+
+    h1{
+      text-align:center;
+      margin-bottom:30px;
+      color:#20586d;
+    }
+
+    .container{
+      width:90%;
+      margin:auto;
+    }
+
+    .card{
+      background:#bcdfec;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom:25px;
+    }
+
+    h2{
+      margin-bottom:15px;
+      color:#20586d;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:15px;
+    }
+
+    table th,
+    table td{
+      border:1px solid #ccc;
+      padding:12px;
+      text-align:center;
+    }
+
+    table tr:nth-child(even){
+        background: lightgray;
+    }
+    table tr:nth-child(odd){
+        background: white;
+    }
+
+    table th{
+      background:#dff1f8;
+      color:#20586d;
+    }
+
+    .pass{
+      color:rgb(62, 202, 62);
+      font-weight:bold;
+    }
+
+    .fail{
+      color:rgb(255, 43, 43);
+      font-weight:bold;
+    }
+
+    .summary{
+      margin-top:20px;
+      font-size:20px;
+      font-weight:bold;
+      color:#20586d;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Student Result Management System</h1>
+
+  <div class="container">
+
+    <div class="card">
+
+      <h2>Student Results</h2>
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Marks</th>
+            <th>Status</th>
+            <th>Grade</th>
+          </tr>
+
+        </thead>
+
+        <tbody id="studentTable">
+
+        </tbody>
+
+      </table>
+
+      <div class="summary" id="summary"></div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    let students = [
+
+      {
+        id:1,
+        name:"Dharshini",
+        department:"AI",
+        marks:5
+      },
+
+      {
+        id:2,
+        name:"Kiruthiga",
+        department:"IT",
+        marks:5.5
+      },
+
+      {
+        id:3,
+        name:"Rickshitha",
+        department:"ECE",
+        marks:72
+      },
+
+      {
+        id:4,
+        name:"Subbulakshmi",
+        department:"EEE",
+        marks:30
+      },
+
+      {
+        id:5,
+        name:"Akshaya",
+        department:"CPPT",
+        marks:95
+      }
+
+    ];
+
+
+    let passedStudents = students.filter(function(student){
+
+      return student.marks >= 50;
+
+    });
+
+
+    let updatedStudents = students.map(function(student){
+
+      let grade = "";
+
+      if(student.marks >= 90){
+        grade = "A+";
+      }
+      else if(student.marks >= 75){
+        grade = "A";
+      }
+      else if(student.marks >= 50){
+        grade = "B";
+      }
+      else{
+        grade = "Fail";
+      }
+
+      return{
+
+        id:student.id,
+        name:student.name,
+        department:student.department,
+        marks:student.marks,
+        status:student.marks >= 50 ? "Pass" : "Fail",
+        grade:grade
+
+      };
+
+    });
+
+
+    let totalMarks = updatedStudents.reduce(function(total,student){
+
+      return total + student.marks;
+
+    },0);
+
+
+    let average = totalMarks / updatedStudents.length;
+
+    let table = document.getElementById("studentTable");
+
+
+    updatedStudents.forEach(function(student){
+
+      table.innerHTML += `
+
+        <tr>
+
+          <td>${student.id}</td>
+
+          <td>${student.name}</td>
+
+          <td>${student.department}</td>
+
+          <td>${student.marks}</td>
+
+          <td class="${student.status === 'Pass' ? 'pass' : 'fail'}">
+            ${student.status}
+          </td>
+
+          <td>${student.grade}</td>
+
+        </tr>
+
+      `;
+
+    });
+
+    document.getElementById("summary").innerHTML =
+
+      `
+        Total Students : ${students.length}
+        <br><br>
+
+        Passed Students : ${passedStudents.length}
+        <br><br>
+
+        Average Marks : ${average.toFixed(2)}
+      `;
+
+  </script>          
+
+</body>
+</html>
